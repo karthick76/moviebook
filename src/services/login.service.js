@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const authenticate = async (email, password) => {
     const url = `/register?email=${email}&password=${password}`;
-    const url1= `movie-booki-app.herokuapp.com/register?email=${email}&password=${password}`
+    const url1= `/register?email=${email}&password=${password}`
     try {
       const response = await axios.get(url1);
       const data = response.data;

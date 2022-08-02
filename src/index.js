@@ -7,7 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from './serviceWorker';
 import Axios from 'axios';
-Axios.defaults.baseURL="http://localhost:5000"
+Axios.defaults.baseURL="https://movie-booki-app.herokuapp.com"
 ReactDOM.render(
   <BrowserRouter>
   <React.StrictMode>
