@@ -41,7 +41,7 @@ export default class Register extends Component {
       };
       const dev = process.env.NODE_ENV !== "production";
       const {URL1, URL2 } = process.env;
-      const response = axios.post(`${dev ? "http://localhost:5000/bookingTickets" : "https://movie-booki-app.herokuapp.com/register"}`,newForm)
+      const response = axios.post(`${dev ? "http://localhost:5000/register" : "https://movie-booki-app.herokuapp.com/register"}`,newForm)
     .then((res)=>{
         this.setState({
           successMessage: "Registered created successfully!!",

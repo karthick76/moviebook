@@ -19,7 +19,9 @@ export default class ViewTicket extends Component {
         })
       }
     fetchMovies = () => {
-        axios.get(url5)
+      const dev = process.env.NODE_ENV !== "production";
+      const {MY, MY1 } = process.env;
+      const response = axios.get(`${dev ? "http://localhost:5000/bookingTickets" : "https://movie-booki-app.herokuapp.com/bookingTickets"}`)
         .then((res)=>{
             this.setState({
                 bookingTickets:res.data,
@@ -30,7 +32,9 @@ export default class ViewTicket extends Component {
         });
     };
     searchuser=()=>{
-        axios.get(`http://localhost:5000/viewTicket/?movieId=${this.state.setRecord.record}`)
+      const dev = process.env.NODE_ENV !== "production";
+      const {MY, MY1 } = process.env;
+        axios.get(`${dev ? `http://localhost:5000/bookingTickets/?movieId=${this.state.setRecord.record}`:`https://movie-booki-app.herokuapp.com/bookingTickets/?movieId=${this.state.setRecord.record}`}`)
         .then(response=>{
             this.setState({
                 setRecord:response.data,
