@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const url1 = "http://localhost:5000/movieList/";
 export default class ViewBooking extends Component {
     state={
         movies:[],
+        loadUsers:[],
+        setData:[],
         errormessage:""
     };
     fetchMovies = () => {
-        axios.get(url1)
+      const devEnv = process.env.NODE_ENV !== "production";
+      const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+      const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
         .then((res)=>{
             this.setState({
                 movies:res.data,
@@ -22,6 +25,12 @@ export default class ViewBooking extends Component {
     componentDidMount() {
         this.fetchMovies();
       }
+  loadUsers = async () =>{
+    const devEnv = process.env.NODE_ENV !== "production";
+    const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+    const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`);
+    //setData(response.data);
+  };
   render() {
     
     return (

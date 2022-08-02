@@ -3,7 +3,6 @@ import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toHaveTextContent } from '@testing-library/jest-dom/dist/matchers';
 const url4="http://localhost:5000/movieList"
-const url3="http://localhost:5000/bookingTickets";
 export default class TicketBooking extends Component {
     constructor(props) {
         super(props);
@@ -37,6 +36,7 @@ export default class TicketBooking extends Component {
         };
       }
       submitBooking = (event) => {
+       
         const myMovie = this.state.movieList.find((movie) => 
         movie.movieId == this.state.form.movieId);
         const bookingCost = myMovie.cost * this.state.form.noOfTicket;
@@ -44,8 +44,9 @@ export default class TicketBooking extends Component {
             ...this.state.form,
             bookingCost: bookingCost,
           };
-        axios
-        .post(url3,newForm)
+        const devEnv2 = process.env.NODE_ENV !== "production";
+        const {REACT_APP_DEV2_URL, REACT_APP_PROD2_URL } = process.env;
+        const response = axios.post(`${devEnv2 ? REACT_APP_DEV2_URL : REACT_APP_PROD2_URL}`,newForm)
         .then((res)=>{
             this.setState({
               successMessage: "Ticket Booked successfully!!",
@@ -68,8 +69,9 @@ export default class TicketBooking extends Component {
         });
     };
     fetchMovies = () => {
-      axios
-        .get(url4)
+  const devEnv = process.env.NODE_ENV !== "production";
+  const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+  const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
         .then((response) => {
           const data = response.data;
           const newState = {
