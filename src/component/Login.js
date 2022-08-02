@@ -149,7 +149,7 @@ handleChange = (e) => {
                disabled={!(this.state.formError.emailErr === "" && this.state.formError.passErr === "")}
                 >Login</button></center>
                <Link to="/register" className="btn btn-link">Register</Link>
-               <Link to="/adminlogin" className="btn btn-link">AdminLogin</Link>
+               <Link to="/admin" className="btn btn-link">AdminLogin</Link>
                <div align="center">
                     {
                        <p className="text-success">{this.state.successMessage}</p>
