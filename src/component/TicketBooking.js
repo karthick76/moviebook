@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toHaveTextContent } from '@testing-library/jest-dom/dist/matchers';
-const url4="http://localhost:5000/movieList"
 export default class TicketBooking extends Component {
     constructor(props) {
         super(props);
@@ -44,9 +43,9 @@ export default class TicketBooking extends Component {
             ...this.state.form,
             bookingCost: bookingCost,
           };
-        const devEnv2 = process.env.NODE_ENV !== "production";
-        const {REACT_APP_DEV2_URL, REACT_APP_PROD2_URL } = process.env;
-        const response = axios.post(`${devEnv2 ? REACT_APP_DEV2_URL : REACT_APP_PROD2_URL}`,newForm)
+          const dev = process.env.NODE_ENV !== "production";
+  const {URL1, URL2 } = process.env;
+  const response = axios.post(`${dev ? "http://localhost:5000/bookingTickets" : "https://movie-booki-app.herokuapp.com/bookingTickets"}`,newForm)
         .then((res)=>{
             this.setState({
               successMessage: "Ticket Booked successfully!!",
@@ -69,9 +68,9 @@ export default class TicketBooking extends Component {
         });
     };
     fetchMovies = () => {
-  const devEnv = process.env.NODE_ENV !== "production";
-  const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
-  const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
+      const devEnv = process.env.NODE_ENV !== "production";
+      const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+      const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
         .then((response) => {
           const data = response.data;
           const newState = {
