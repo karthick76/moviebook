@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const url2 = "http://localhost:4000/register/";
+const url2 = "http://localhost:5000/register/";
 
 export default class ViewUsers extends Component {
     constructor(props){
@@ -31,7 +31,7 @@ export default class ViewUsers extends Component {
         });
     };
     searchuser=()=>{
-        axios.get(`http://localhost:4000/register/?fname=${this.state.setRecord.record}`)
+        axios.get(`http://localhost:5000/register/?fname=${this.state.setRecord.record}`)
         .then(response=>{
             this.setState({
                 setRecord:response.data,

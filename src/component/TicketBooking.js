@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toHaveTextContent } from '@testing-library/jest-dom/dist/matchers';
-const url4="http://localhost:4000/movieList"
-const url3="http://localhost:4000/bookingTickets";
+const url4="http://localhost:5000/movieList"
+const url3="http://localhost:5000/bookingTickets";
 export default class TicketBooking extends Component {
     constructor(props) {
         super(props);

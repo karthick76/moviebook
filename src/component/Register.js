@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-const url1="http://localhost:4000/register/"
+const url1="http://localhost:5000/register/"
 export default class Register extends Component {
   constructor(props) {
     super(props);

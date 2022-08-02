@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const url5 = "http://localhost:4000/bookingTickets";
+const url5 = "http://localhost:5000/bookingTickets";
 export default class ViewTicket extends Component {
     constructor(props){
         super(props);
@@ -30,7 +30,7 @@ export default class ViewTicket extends Component {
         });
     };
     searchuser=()=>{
-        axios.get(`http://localhost:4000/viewTicket/?movieId=${this.state.setRecord.record}`)
+        axios.get(`http://localhost:5000/viewTicket/?movieId=${this.state.setRecord.record}`)
         .then(response=>{
             this.setState({
                 setRecord:response.data,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import {Link} from "react-router-dom";
-const url1 = "http://localhost:4000/movieList/";
+const url1 = "http://localhost:5000/movieList/";
 export default class AdminView extends Component {
   state={
     movies:[],

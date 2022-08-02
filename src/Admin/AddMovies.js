@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-const url = "http://localhost:4000/movieList/";
+const url = "http://localhost:5000/movieList/";
 export default class AddMovies extends Component {
     constructor(props) {
         super(props);

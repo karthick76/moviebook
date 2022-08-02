@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-const url1 = "http://localhost:4000/movieList/";
+const url1 = "http://localhost:5000/movieList/";
 
 export default class UpdateMovie extends Component {
    constructor(props){
@@ -64,7 +64,7 @@ componentDidMount() {
       UpdateBooking = (id) => {
             console.log(this.state.updated.movieId);
             console.log(this.state.updated.movieName);
-            axios.put(`http://localhost:4000/movieList/${this.state.updated.id}`,{
+            axios.put(`http://localhost:5000/movieList/${this.state.updated.id}`,{
                 movieId:this.state.updated.movieId,
                 movieName:this.state.updated.movieName,
                 cost:this.state.updated.cost,
