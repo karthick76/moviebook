@@ -64,7 +64,9 @@ componentDidMount() {
       UpdateBooking = (id) => {
             console.log(this.state.updated.movieId);
             console.log(this.state.updated.movieName);
-            axios.put(`http://localhost:5000/movieList/${this.state.updated.id}`,{
+            const devEnv = process.env.NODE_ENV !== "production";
+      const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+      const response = axios.put(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${this.state.updated.id}`,{
                 movieId:this.state.updated.movieId,
                 movieName:this.state.updated.movieName,
                 cost:this.state.updated.cost,

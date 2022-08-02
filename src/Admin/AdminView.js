@@ -9,7 +9,9 @@ export default class AdminView extends Component {
     errormessage:""
 };
 fetchMovies = () => {
-    axios.get(url1)
+  const devEnv = process.env.NODE_ENV !== "production";
+  const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+  const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
     .then((res)=>{
         this.setState({
             movies:res.data,

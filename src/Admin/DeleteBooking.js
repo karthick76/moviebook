@@ -18,8 +18,9 @@ export default class DeleteBooking extends Component {
       }
     
       fetchMovies = () => {
-        axios
-          .get(url1)
+        const devEnv = process.env.NODE_ENV !== "production";
+        const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+        const response = axios.get(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}`)
           .then((response) => {
             const data = response.data;
             const newState = {
@@ -43,8 +44,9 @@ export default class DeleteBooking extends Component {
       };
     
       deleteMovies = (id) => {
-        axios
-          .delete(url1 + id)
+        const devEnv = process.env.NODE_ENV !== "production";
+        const {REACT_APP_DEV_URL, REACT_APP_PROD_URL } = process.env;
+        const response = axios.delete(`${devEnv ? REACT_APP_DEV_URL : REACT_APP_PROD_URL}/${id}`)
           .then((res) => {
             this.fetchMovies();
             this.setState({

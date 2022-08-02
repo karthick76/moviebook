@@ -23,8 +23,9 @@ export default class DeleteUser extends Component {
         })
       }
       fetchMovies = () => {
-        axios
-          .get(url2)
+        const dev = process.env.NODE_ENV !== "production";
+        const {URL1, URL2 } = process.env;
+        const response = axios.get(`${dev ? "http://localhost:5000/register" : "https://movie-booki-app.herokuapp.com/register"}`)
           .then((response) => {
             const data = response.data;
             const newState = {
@@ -47,7 +48,9 @@ export default class DeleteUser extends Component {
         */
       };
       searchuser=()=>{
-        axios.get(`http://localhost:5000/register/?fname=${this.state.setRecord.record}`)
+        const dev = process.env.NODE_ENV !== "production";
+        const {URL1, URL2 } = process.env;
+        const response = axios.get(`${dev ? `http://localhost:5000/register/?fname=${this.state.setRecord.record}` : `https://movie-booki-app.herokuapp.com/register/?fname=${this.state.setRecord.record}`}`)
         .then(response=>{
             this.setState({
                 setRecord:response.data,
@@ -55,8 +58,10 @@ export default class DeleteUser extends Component {
         });
     }
       deleteMovies = (id) => {
+        const dev = process.env.NODE_ENV !== "production";
+        const {URL1, URL2 } = process.env;
         axios
-          .delete(url2 + id)
+          .delete(`${dev ? "http://localhost:5000/register" : "https://movie-booki-app.herokuapp.com/register"}/${id}`)
           .then((res) => {
             this.fetchMovies();
             this.setState({
