@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-const url1="http://localhost:5000/register/"
 export default class Register extends Component {
   constructor(props) {
     super(props);
@@ -40,8 +39,9 @@ export default class Register extends Component {
     const newForm = {
         ...this.state.formData,
       };
-    axios
-    .post(url1,newForm)
+      const dev = process.env.NODE_ENV !== "production";
+      const {URL1, URL2 } = process.env;
+      const response = axios.post(`${dev ? "http://localhost:5000/bookingTickets" : "https://movie-booki-app.herokuapp.com/register"}`,newForm)
     .then((res)=>{
         this.setState({
           successMessage: "Registered created successfully!!",

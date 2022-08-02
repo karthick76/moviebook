@@ -44,8 +44,8 @@ export default class TicketBooking extends Component {
             bookingCost: bookingCost,
           };
           const dev = process.env.NODE_ENV !== "production";
-  const {URL1, URL2 } = process.env;
-  const response = axios.post(`${dev ? "http://localhost:5000/bookingTickets" : "https://movie-booki-app.herokuapp.com/bookingTickets"}`,newForm)
+  const {MY, MY1 } = process.env;
+  const response = axios.post(`${dev ? "http://localhost:5000/register" : "https://movie-booki-app.herokuapp.com/bookingTickets"}`,newForm)
         .then((res)=>{
             this.setState({
               successMessage: "Ticket Booked successfully!!",
